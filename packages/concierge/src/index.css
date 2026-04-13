@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --cream: #fbf6ed;
+  --paper: #ffffff;
+  --ink: #2a2438;
+  --ink2: #5c5470;
+  --ink3: #8a829a;
+  --rule: #e8dfd0;
+  --lilac: #c9b8ff;
+  --lilacDeep: #8b6cf5;
+  --mint: #a8ecd0;
+  --mintDeep: #2fb579;
+  --peach: #ffc9a8;
+  --peachDeep: #ef7c3a;
+  --rose: #ffb4c1;
+  --roseDeep: #e0446a;
+  --butter: #ffe07a;
+  --butterDeep: #c99208;
+  --sky: #bfe2ff;
+  --skyDeep: #2e89c7;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.005em;
+}
+
+/* Warm paper texture — grid paper + soft pastel washes */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1200px 600px at 8% -8%, rgba(201, 184, 255, 0.35), transparent 55%),
+    radial-gradient(900px 500px at 105% 8%, rgba(168, 236, 208, 0.32), transparent 55%),
+    radial-gradient(800px 420px at 50% 115%, rgba(255, 180, 193, 0.28), transparent 55%),
+    var(--cream);
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(42, 36, 56, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42, 36, 56, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 85%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Selection */
+::selection {
+  background: var(--butter);
+  color: var(--ink);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e8dfd0;
+  border-radius: 999px;
+  border: 2px solid var(--cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d8ccb7;
+}
+
+/* =========================================================
+   Paper card — the defining surface for this design
+   ========================================================= */
+.paper {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 22px;
+  box-shadow: 0 1px 0 rgba(42, 36, 56, 0.04), 0 22px 44px -28px rgba(42, 36, 56, 0.22);
+}
+
+/* Torn/stamped edge detail — tiny dashed top rule */
+.paper-stamped::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 10px;
+  height: 1px;
+  background-image: linear-gradient(
+    90deg,
+    var(--rule) 0 8px,
+    transparent 8px 14px
+  );
+  background-size: 14px 1px;
+}
+
+/* Eyebrow label — used above headings */
+.eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink3);
+}
+
+/* Display heading — serif, slightly condensed via font-stretch */
+.display {
+  font-family: 'Fraunces', Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* Ink-flow gradient text for the brand wordmark */
+.inkflow {
+  background: linear-gradient(
+    90deg,
+    var(--lilacDeep) 0%,
+    var(--roseDeep) 25%,
+    var(--butterDeep) 50%,
+    var(--mintDeep) 75%,
+    var(--lilacDeep) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: inkflow 9s linear infinite;
+}
+
+/* =========================================================
+   Pastel tags (chips) — flat pastel fill, deep-color text
+   ========================================================= */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(42, 36, 56, 0.08);
+}
+
+.tag-lilac { background: var(--lilac); color: #3a2a78; }
+.tag-mint { background: var(--mint); color: #0f5f3f; }
+.tag-peach { background: var(--peach); color: #7a3a12; }
+.tag-rose { background: var(--rose); color: #7a1f36; }
+.tag-butter { background: var(--butter); color: #6a4c00; }
+.tag-sky { background: var(--sky); color: #124a73; }
+.tag-ink { background: #efeaf7; color: var(--ink); }
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn-ink {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  border-radius: 999px;
+  padding: 10px 20px;
+  border: 1px solid var(--ink);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 18px -8px rgba(42, 36, 56, 0.55);
+}
+.btn-ink:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #3a3048;
+}
+.btn-ink:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-paper {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 999px;
+  padding: 9px 16px;
+  border: 1px solid var(--rule);
+  transition: all 0.15s ease;
+}
+.btn-paper:hover:not(:disabled) {
+  background: #fdfaf4;
+  border-color: #d8ccb7;
+}
+.btn-paper:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Preset chip — hand-drawn sticker feel */
+.preset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  font-size: 12.5px;
+  color: var(--ink2);
+  font-weight: 500;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 0 rgba(42, 36, 56, 0.03);
+}
+.preset:hover:not(:disabled) {
+  background: var(--butter);
+  border-color: rgba(201, 146, 8, 0.4);
+  color: var(--ink);
+  transform: translateY(-1px) rotate(-0.4deg);
+}
+
+/* =========================================================
+   Input
+   ========================================================= */
+.paper-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.paper-input::placeholder {
+  color: var(--ink3);
+  font-style: italic;
+}
+
+/* =========================================================
+   Prose for final briefing
+   ========================================================= */
+.prose-paper {
+  font-family: 'Instrument Sans', sans-serif;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.prose-paper p { margin: 0.5em 0; }
+.prose-paper h1, .prose-paper h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0.7em 0 0.25em;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.prose-paper h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0.6em 0 0.2em;
+  color: var(--ink);
+}
+.prose-paper ul {
+  margin: 0.4em 0 0.4em 1em;
+  list-style: none;
+  padding-left: 0;
+}
+.prose-paper ul li {
+  position: relative;
+  padding-left: 18px;
+  margin: 0.25em 0;
+}
+.prose-paper ul li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 10px;
+  width: 8px;
+  height: 1px;
+  background: var(--lilacDeep);
+}
+.prose-paper strong {
+  color: var(--ink);
+  background: linear-gradient(180deg, transparent 65%, var(--butter) 65%);
+  padding: 0 2px;
+}
+.prose-paper code {
+  background: #f2ede2;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--lilacDeep);
+}
+.prose-paper a {
+  color: var(--lilacDeep);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+/* Progress bar — soft pastel fill */
+.progress-track {
+  background: #f3ecdf;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mint), var(--lilac), var(--peach));
+  background-size: 200% 100%;
+  animation: inkflow 6s linear infinite;
+}
+
+/* Dashed divider */
+.dashed-rule {
+  border: none;
+  border-top: 1px dashed var(--rule);
+  margin: 0;
+}
+
+/* Marker pen underline */
+.marker {
+  background: linear-gradient(180deg, transparent 62%, var(--butter) 62%);
+  padding: 0 1px;
+}

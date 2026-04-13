@@ -1,0 +1,33 @@
+{
+  "name": "@agentpay/sdk",
+  "version": "0.1.0",
+  "description": "AgentPay SDK — Turn any AI agent skill into a paid service on Stellar",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "agentpay": "dist/cli.js"
+  },
+  "exports": {
+    ".": { "import": "./dist/index.js", "types": "./dist/index.d.ts" },
+    "./server": { "import": "./dist/server.js", "types": "./dist/server.d.ts" },
+    "./client": { "import": "./dist/client.js", "types": "./dist/client.d.ts" }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^14.6.1",
+    "@x402/core": "^2.9.0",
+    "@x402/stellar": "^2.9.0",
+    "@x402/fetch": "^2.9.0",
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/cors": "^2.8.17",
+    "typescript": "^5.5.0"
+  }
+}

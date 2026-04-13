@@ -1,0 +1,24 @@
+{
+  "name": "agentpay",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AgentPay — Turn any AI agent into a paid service on Stellar",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "build:contracts": "stellar contract build",
+    "build:sdk": "pnpm --filter @agentpay/sdk run build",
+    "build:mcp": "pnpm --filter @agentpay/mcp-server run build",
+    "build:api": "pnpm --filter @agentpay/api run build",
+    "deploy": "bash scripts/deploy.sh",
+    "api": "node packages/api/dist/index.js",
+    "mcp": "node packages/mcp-server/dist/index.js",
+    "demo:concierge": "pnpm --filter @agentpay/concierge run dev"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.88.0",
+    "tsx": "^4.21.0"
+  }
+}

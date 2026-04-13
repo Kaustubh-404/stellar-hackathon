@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.next/
+target/
+.env
+.env.local
+.env.demo
+.env.deployed
+*.wasm
+.stellar/
+.soroban/
+tsconfig.tsbuildinfo
+
+DESIGN.md
